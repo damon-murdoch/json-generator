@@ -1,0 +1,24 @@
+<html>
+    <meta charset='utf-8'>
+
+    <script src='abilities.js'>
+    </script>
+    <script src='moves.js'>
+    </script>
+    <script src='pokedex.js'>
+    </script>
+    <script src='types.js'>
+    </script>
+
+    <script>
+        function download(content)
+        {
+            window.open('data:text/txt;charset=utf-8,' + escape(content));
+        }
+
+        download(JSON.stringify(abilities,null,2));
+        download(JSON.stringify(moves,null,2));
+        download(JSON.stringify(pokedex,null,2));
+        download(JSON.stringify(types,null,2));
+    </script>
+</html>>
