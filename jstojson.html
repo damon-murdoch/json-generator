@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <meta charset='utf-8'>
+    <head>
+        <title>
+            JavaScript to Json Converter
+        </title>
+
+        <!-- JavaScript Source Content -->
+        <script type='text/javascript'>
+
+            // download(content: string): void
+            function download(content)
+            {
+                // Create the uri for the pasted file
+                let uri = 'data:text/txt;charset=utf-8,' + escape(content);
+
+                // Create a download link object
+                let link = document.createElement("a");
+
+                // Set the href of the link to the uri
+                link.href = uri;
+
+                // Name of the file to be downloaded
+                link.download = "input.json";
+
+                // Add the download link to the document
+                document.body.appendChild(link);
+
+                // Click on the downliad link
+                link.click();
+
+                // Remove the download link from the document
+                document.body.removeChild(link);
+            }
+
+            // convert(void): void
+            function convert()
+            {
+                // Get the  content from the input field
+                let content = document.getElementById('jsinput').value;
+
+                // Download the file pasted into the terminal
+                download(JSON.stringify(content,null,2));
+            }
+
+        </script>
+    </head>
+    <body>
+        <h1> JavaScript to Json Converter </h1>
+        <h2>
+            Developed by Damon Murdoch ( 
+                <a href="https://twitter.com/SirScrubbington"> @SirScrubbington </a> 
+            )
+        </h2>
+        <div>
+            <label for='jsinput'> JavaScript Input </label>
+            <textarea id='jsinput' name='jsinput' rows='4' cols='32'></textarea>
+        </div>
+        <button onClick='convert()'>
+            Convert to Json
+        </button>
+    </body>
+</html>
+
+<!--
+    <meta charset='utf-8'>
+    <script>
+        function download(content)
+        {
+            window.open('data:text/txt;charset=utf-8,' + escape(content));
+        }
+
+        download(JSON.stringify(abilities,null,2));
+        download(JSON.stringify(moves,null,2));
+        download(JSON.stringify(pokedex,null,2));
+        download(JSON.stringify(types,null,2));
+    </script>
+-->
