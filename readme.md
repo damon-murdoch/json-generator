@@ -1,3 +1,7 @@
+---
+permalink: /index.html
+---
+
 # Json Generator
 ## A Web Application for converting JavaScript Objects to Json Objects.
 ### Developed by Damon Murdoch ([@SirScrubbington](https://twitter.com/SirScrubbington)).
@@ -15,12 +19,6 @@ A link to the live application can be found
 [here](https://damon-murdoch.github.io/json-generator/).
 
 Link: https://damon-murdoch.github.io/json-generator/
-
-### Permalink
-
----
-permalink: /index.html
----
 
 ## Future Changes
 A list of future planned fixes / improvements are listed below.
