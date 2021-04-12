@@ -1,79 +1,117 @@
 <!DOCTYPE html>
 <html>
-    <meta charset='utf-8'>
     <head>
-        <title>
-            JavaScript to Json Converter
-        </title>
+        <!-- Webpage Title -->
+        <title> JavaScript to Json Converter </title>
 
-        <!-- JavaScript Source Content -->
-        <script type='text/javascript'>
+        <!-- Custom Icon -->
+        <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
 
-            // download(content: string): void
-            function download(content)
-            {
-                // Create the uri for the pasted file
-                let uri = 'data:text/txt;charset=utf-8,' + escape(content);
+        <!-- Prevent Firefox Errors -->
+        <meta charset='utf-8'>
 
-                // Create a download link object
-                let link = document.createElement("a");
+        <!-- Stylesheet Source -->
 
-                // Set the href of the link to the uri
-                link.href = uri;
-
-                // Name of the file to be downloaded
-                link.download = "input.json";
-
-                // Add the download link to the document
-                document.body.appendChild(link);
-
-                // Click on the downliad link
-                link.click();
-
-                // Remove the download link from the document
-                document.body.removeChild(link);
-            }
-
-            // convert(void): void
-            function convert()
-            {
-                // Get the  content from the input field
-                let content = document.getElementById('jsinput').value;
-
-                // Download the file pasted into the terminal
-                download(JSON.stringify(content,null,2));
-            }
-
-        </script>
+        <!-- latest bootstrap release -->
+		<link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css">
+		
+		<!-- custom css -->
+		<link rel="stylesheet" type="text/css" href="index.css">
     </head>
     <body>
-        <h1> JavaScript to Json Converter </h1>
-        <h2>
-            Developed by Damon Murdoch ( 
-                <a href="https://twitter.com/SirScrubbington"> @SirScrubbington </a> 
-            )
-        </h2>
-        <div>
-            <label for='jsinput'> JavaScript Input </label>
-            <textarea id='jsinput' name='jsinput' rows='4' cols='32'></textarea>
+        <!-- Main JavaScript Body -->
+        <div id='body' class='container text-center'>
+            <h2> <!-- Main Heading -->
+                JavaScript to Json Converter
+            </h2>
+            <h4> <!-- Subtitle -->
+                <p> 
+                    Developed by Damon Murdoch
+                </p>
+
+                <!-- Twitter Link -->
+                <a href="https://twitter.com/SirScrubbington">
+                    @SirScrubbington
+                </a>
+            </h4>
+            <div>
+                <!-- TextArea Label -->
+                <label for='jsinput'> 
+                    Paste JavaScript Object Here
+                </label>
+                
+                <!-- Text Area for pasting JavaScript Object -->
+                <textarea id='jsinput' class='form-control' name='jsinput' rows='4' cols='32'>
+                </textarea>
+            </div>
+
+            <!-- Convert Button -->
+            <button id='convert' class='form-control btn-primary' onClick='convert()'>
+                Convert Now
+            </button>
         </div>
-        <button onClick='convert()'>
-            Convert to Json
-        </button>
+
+        <!-- JavaScript Source -->
+        <div>
+                
+            <!-- JQuery Source Code -->
+            <script src="util/jquery.js">
+            </script>
+            
+            <!-- Bootstrap Java Script Code -->
+            <script src="bootstrap/bootstrap.js">
+            </script>
+
+            <!-- JavaScript Source Content -->
+            <script type='text/javascript'>
+
+                // download(content: string): void
+                function download(content)
+                {
+                    // Create the uri for the pasted file
+                    let uri = 'data:text/txt;charset=utf-8,' + escape(content);
+
+                    // Create a download link object
+                    let link = document.createElement("a");
+
+                    // Set the href of the link to the uri
+                    link.href = uri;
+
+                    // Name of the file to be downloaded
+                    link.download = "input.json";
+
+                    // Add the download link to the document
+                    document.body.appendChild(link);
+
+                    // Click on the downliad link
+                    link.click();
+
+                    // Remove the download link from the document
+                    document.body.removeChild(link);
+                }
+
+                // convert(void): void
+                function convert()
+                {
+                    // Get the  content from the input field
+                    let content = document.getElementById('jsinput').value;
+
+                    try
+                    {
+                        // Parse the content from the string
+                        content = eval('(' + content + ')');
+
+                        // Download the file pasted into the terminal
+                        download(JSON.stringify(content));
+                    }
+                    catch(err) // Fail to convert to string
+                    {
+                        // Create a window popup with the error message
+                        alert("Error: " + err.message);
+                    }
+                }
+                
+            </script>
+        </div>
     </body>
 </html>
-
-<!--
-    <meta charset='utf-8'>
-    <script>
-        function download(content)
-        {
-            window.open('data:text/txt;charset=utf-8,' + escape(content));
-        }
-
-        download(JSON.stringify(abilities,null,2));
-        download(JSON.stringify(moves,null,2));
-        download(JSON.stringify(pokedex,null,2));
-        download(JSON.stringify(types,null,2));
-    </script>
--->
