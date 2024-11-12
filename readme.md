@@ -1,7 +1,3 @@
----
-permalink: /index.html
----
-
 # Json Generator
 ## A Web Application for converting JavaScript Objects to Json Objects.
 ### Developed by Damon Murdoch ([@SirScrubbington](https://twitter.com/SirScrubbington)).
